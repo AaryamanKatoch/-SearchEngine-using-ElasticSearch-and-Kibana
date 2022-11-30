@@ -1,0 +1,396 @@
+PUT /javabm
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer":{
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+            ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "BM25"
+      },
+      "body": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "BM25"
+      },
+      "answer":{
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "BM25"
+      }
+    }
+  }
+}
+
+
+PUT /javatf
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer":{
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+            ]
+        }
+      }}
+    
+  ,    "similarity": {
+      "tfidf": {
+        "type": "scripted",
+        "script": {
+          "source": "double tf = doc.freq; double idf = Math.log(1.0+ (field.docCount)/(term.docFreq)); return tf * idf;"
+        }
+      }
+    }
+    
+    
+    
+  },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "tfidf"
+      },
+      "body": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "tfidf"
+      },
+      "answer":{
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "tfidf"
+      }
+    }
+  }
+}
+
+
+
+PUT /javadlm
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+            ]
+        }
+      }
+    },
+    "similarity": {
+          "lmd" : {
+            "type" : "LMDirichlet",
+            "mu" : 2000
+          }
+
+        }
+      },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "lmd"
+      },
+      "body": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "lmd"
+      },
+      "answer": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "lmd"
+      }
+    }
+  }
+}
+
+
+
+
+PUT /pythonbm
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+            ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "BM25"
+      },
+      "body": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "BM25"
+      },
+      "answer": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "BM25"
+      }
+    }
+  }
+}
+
+
+
+
+PUT /pythontf
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+            ]
+        }
+      }
+    },
+    "similarity": {
+      "tfidf": {
+        "type": "scripted",
+        "script": {
+          "source": "double tf = doc.freq; double idf = Math.log(1.0+ (field.docCount)/(term.docFreq)); return tf * idf;"
+        }
+      }
+    }
+    
+    
+    
+  },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "tfidf"
+      },
+      "body": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "tfidf"
+      },
+      "answer": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "tfidf"
+      }
+    }
+  }
+}
+
+
+
+
+PUT /pythondlm
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+            ]
+        }
+      }
+    },
+    "similarity": {
+          "lmd" : {
+            "type" : "LMDirichlet",
+            "mu" : 2000
+          }
+
+        }
+      },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "lmd"
+      },
+      "body": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "lmd"
+      },
+      "answer": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "lmd"
+      }
+    }
+  }
+}
+
+
+
+PUT /javascriptbm
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+            ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "BM25"
+      },
+      "body": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "BM25"
+      },
+      "answer": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "BM25"
+      }
+    }
+  }
+}
+
+
+
+PUT /javascripttf
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+            ]
+        }
+      }
+    },
+    "similarity": {
+      "tfidf": {
+        "type": "scripted",
+        "script": {
+          "source": "double tf = doc.freq; double idf = Math.log(1.0+ (field.docCount)/(term.docFreq)); return tf * idf;"
+        }
+      }
+    }
+    
+    
+    
+  },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "tfidf"
+      },
+      "body": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "tfidf"
+      },
+      "answer": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "tfidf"
+      }
+    }
+  }
+}
+
+
+PUT /javascriptdlm
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase",
+            "porter_stem"
+            ]
+        }
+      }
+    },
+    "similarity": {
+          "lmd" : {
+            "type" : "LMDirichlet",
+            "mu" : 2000
+          }
+
+        }
+      },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "lmd"
+      },
+      "body": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "lmd"
+      },
+      "answer": {
+        "type": "text",
+        "analyzer": "my_analyzer",
+        "similarity": "lmd"
+      }
+    }
+  }
+}
+
+
